@@ -3,7 +3,6 @@ import db from "@repo/db/client";
 const app = express();
 
 app.use(express.json());
-const port = 3003;
 
 app.post("/hdfcWebhook", async (req, res) => {
   //TODO: Add zod validation here?
@@ -52,4 +51,4 @@ app.post("/hdfcWebhook", async (req, res) => {
   }
 });
 
-app.listen(`${port}`);
+app.listen(3003);
