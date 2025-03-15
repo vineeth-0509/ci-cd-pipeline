@@ -27,10 +27,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 100xdevs/web-app:latest
+          tags: vineeth935/cicd-pipeline:latest
 
       - name: Verify Pushed Image
-        run: docker pull 100xdevs/web-app:latest
+        run: docker pull vineeth935/cicd-pipeline:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull 100xdevs/web-app:latest
-            sudo docker stop web-app || true
-            sudo docker rm web-app || true
-            sudo docker run -d --name web-app -p 3005:3000 100xdevs/web-app:latest
+            sudo docker pull vineeth935/cicd-pipeline:latest
+            sudo docker stop cicd-pipeline || true
+            sudo docker rm cicd-pipeline || true
+            sudo docker run -d --name cicd-pipeline -p 3005:3000 vineeth935/cicd-pipeline:latest
